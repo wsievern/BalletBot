@@ -7,10 +7,6 @@ from kivy.properties import BooleanProperty
 class NavigationScreenManager(ScreenManager):
     screen_stack = []
 
-
-
-
-
     def push(self, screen_name):
         if screen_name not in self.screen_stack:
             self.screen_stack.append(self.current)
@@ -26,9 +22,6 @@ class NavigationScreenManager(ScreenManager):
 
     def tempo_tap(self):
         print("tapped")
-
-
-
 
 
     '''def play_audio(self):

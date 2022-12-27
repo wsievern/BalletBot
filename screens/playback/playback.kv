@@ -1,4 +1,5 @@
-#: import playback playback
+#:kivy 2.0
+#: import playback screens.playback.playback
 
 <Playback>:
     name: "playback"
@@ -17,7 +18,6 @@
             on_press:
                 root.play_plie_piece()
 
-
         MDIconButton:
             id: stop_button
             pos_hint: {'center_x': 0.55, 'center_y': 0.05}
@@ -25,12 +25,12 @@
             on_press:
                 root.stop_audio()
 
-
         Label:
             text: "00:00"
             pos_hint: {'center_x':.16, 'center_y':.145}
             size_hint: (1,1)
             font_size: 18
+
         Label:
             text: "00:00"
             pos_hint: {'center_x':0.84, 'center_y':.145}

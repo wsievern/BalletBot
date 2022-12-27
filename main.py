@@ -10,7 +10,7 @@ Window.size = (500, 1000)
 
 class BalletApp(MDApp):
     def build(self):
-        self.root = Builder.load_file("ballet.kv")
+        self.root = Builder.load_file("screens/ballet.kv")
 
 
 # if __name__ == '__main__':

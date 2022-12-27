@@ -1,12 +1,11 @@
 from kivy.lang import Builder
 from kivy.properties import BooleanProperty
 from kivy.uix.floatlayout import FloatLayout
-
-# from piece_selection import PieceSelection
-from piece_service import plie_piece
 from kivy.core.audio import SoundLoader
 
-Builder.load_file("playback.kv")
+from state.app_state import mem
+
+Builder.load_file("screens/playback/playback.kv")
 
 
 class Playback(FloatLayout):
@@ -20,7 +19,12 @@ class Playback(FloatLayout):
         self.sound = None
 
     def play_plie_piece(self):
-        self.sound = SoundLoader.load(plie_piece.filename)
+        filename = mem.selected_piece_filename
+        print(f"Playing: {filename}")
+        if not filename:
+            # TODO: handle error
+            print("no file selected")
+        self.sound = SoundLoader.load(filename)
         self.sound.play()
         self.play_enabled = False
         self.stop_enabled = True
