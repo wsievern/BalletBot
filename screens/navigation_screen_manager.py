@@ -19,6 +19,9 @@ class NavigationScreenManager(ScreenManager):
             self.transition.direction = "right"
             self.current = screen_name
 
+    def tempo_tap(self):
+        print("tapped")
+
     '''def play_audio(self):
         self.sound = Piece.loaded_piece
         #self.song_title = self.song_list[random.randrange(0, self.song_count)]

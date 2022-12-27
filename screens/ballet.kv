@@ -1,16 +1,12 @@
-#: kivy 2.0
-#: import navigation_screen_manager navigation_screen_manager
-#: import piece_selection piece_selection
-#: import playback playback
+#:kivy 2.0
+#: import navigation_screen_manager screens.navigation_screen_manager
+#: import piece_selection screens.piece_selection.piece_selection
+#: import playback screens.playback.playback
 #: import tap_tempo tap_tempo
 
 MyScreenManager:
 
-
-
 <MyScreenManager@NavigationScreenManager>:
-
-
     Screen:
         name: "class_overview"
         BoxLayout:
@@ -58,7 +54,6 @@ MyScreenManager:
                 on_press:
                     root.push('piece_selection')
         Playback:
-        TapTempo:
 
     Screen:
         name: "tendus_from_first"
@@ -78,11 +73,8 @@ MyScreenManager:
             text: 'back'
             on_press: root.pop()
 
-
-
     Screen:
         name: "piece_selection"
-        #id: piece_selection
         BoxLayout:
             orientation: "vertical"
             ActionBar:
@@ -91,32 +83,5 @@ MyScreenManager:
                         title: "back"
                         on_release:
                             root.pop()
-                            #plie_select_piece_title.text = root.song_title
             PieceSelection:
-
-        #on_enter: root.load_pieces()
-        #BoxLayout:
-        #orientation: vertical
-
-
-        #BoxLayout:
-            #orientation: 'vertical'
-            #Button:
-                #text: 'load pieces'
-                #on_press:
-                    #root.load_pieces()
-        #AnchorLayout:
-           # anchor_x: "left"
-           # anchor_y: "top"
-            #Button:
-               # text: 'back'
-                #size_hint: .1, .1
-                #on_press:
-
-                    #plie_select_piece_title.text = root.song_title
-                    #root.pop()
-
-
-
-
 
