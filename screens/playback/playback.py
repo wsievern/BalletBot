@@ -16,7 +16,21 @@ class Playback(FloatLayout):
         super(Playback, self).__init__(**kwargs)
         self.play_enabled = True
         self.stop_enabled = False
-        self.sound = None
+        '''if plie_piece.displayname is not None:
+            plie_piece_title_label = Label(text=str(plie_piece.displayname),
+                                           pos_hint={'center_x': 0.5, 'center_y': .96},
+                                           size_hint=(1, 1),
+                                           font_size=30
+                                           )
+
+            self.add_widget(plie_piece_title_label)
+            plie_piece_bpm_label = Label(text=str(plie_piece.bpm),
+                                         pos_hint={'center_x': 0.5, 'center_y': .96},
+                                         size_hint=(1, 1),
+                                         font_size=30
+            )
+            self.add_widget(plie_piece_bpm_label)'''
+
 
     def play_plie_piece(self):
         filename = mem.selected_piece_filename
@@ -30,7 +44,11 @@ class Playback(FloatLayout):
         self.stop_enabled = True
 
     def stop_audio(self):
-        self.sound.stop()
-        self.play_enabled = True
-        self.stop_enabled = False
+        if plie_piece.filename is None:
+            pass
+        else:
+            self.sound.stop()
+            self.play_enabled = True
+            self.stop_enabled = False
+
 

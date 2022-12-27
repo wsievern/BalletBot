@@ -1,7 +1,6 @@
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivy.uix.label import Label
-from kivy.properties import BooleanProperty
 
 
 class NavigationScreenManager(ScreenManager):
@@ -23,7 +22,6 @@ class NavigationScreenManager(ScreenManager):
     def tempo_tap(self):
         print("tapped")
 
-
     '''def play_audio(self):
         self.sound = Piece.loaded_piece
         #self.song_title = self.song_list[random.randrange(0, self.song_count)]
@@ -33,8 +31,6 @@ class NavigationScreenManager(ScreenManager):
         self.play_enabled = False
         self.stop_enabled = True'''
 
-
-
     def display_title(self):
         layout = MDRelativeLayout(md_bg_color=[0, 0.5, 1, 1])
         self.songlabel = Label(pos_hint={'center_x': 0.5, 'center_y': .96},
@@ -43,6 +39,3 @@ class NavigationScreenManager(ScreenManager):
         layout.add_widget(self.songlabel)
         self.songlabel.text = "===== Playing ~ ====="
         return layout
-
-
-

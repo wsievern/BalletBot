@@ -2,6 +2,7 @@
 #: import navigation_screen_manager screens.navigation_screen_manager
 #: import piece_selection screens.piece_selection.piece_selection
 #: import playback screens.playback.playback
+#: import tap_tempo tap_tempo
 
 MyScreenManager:
 
@@ -30,13 +31,16 @@ MyScreenManager:
             Rectangle:
                 pos:self.pos
                 size:self.size
-        AnchorLayout:
-            anchor_x: "left"
-            anchor_y: "top"
-            Button:
-                text: 'back'
-                size_hint: .1, .1
-                on_press: root.pop()
+        FloatLayout:
+            orientation: "vertical"
+
+            ActionBar:
+                pos_hint: {'top': 1}
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
         FloatLayout:
             Label:
                 text: "Plies"
