@@ -14,6 +14,7 @@ class Playback(FloatLayout):
 
     def __init__(self, **kwargs):
         super(Playback, self).__init__(**kwargs)
+        # TODO: probably only need one boolean, can always use inverse of it
         self.play_enabled = True
         self.stop_enabled = False
         '''if plie_piece.displayname is not None:
@@ -31,7 +32,7 @@ class Playback(FloatLayout):
             )
             self.add_widget(plie_piece_bpm_label)'''
 
-
+    # TODO: rename to play_audio for consistency?
     def play_plie_piece(self):
         filename = mem.selected_piece_filename
         print(f"Playing: {filename}")
@@ -44,9 +45,10 @@ class Playback(FloatLayout):
         self.stop_enabled = True
 
     def stop_audio(self):
-        if plie_piece.filename is None:
-            pass
-        else:
+        filename = mem.selected_piece_filename
+        print(f"Playing: {filename}")
+        # TODO: probably just need to check if song is playing to stop, filename not really relevant here
+        if filename is not None:
             self.sound.stop()
             self.play_enabled = True
             self.stop_enabled = False
