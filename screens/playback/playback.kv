@@ -4,11 +4,6 @@
 <Playback>:
     name: "playback"
     FloatLayout:
-        #Button:
-            #text: 'tap tempo'
-            #size_hint: .2, .1
-            #pos_hint: {"x":.2, "y":.4}
-            #on_press: root.tempo_tap()
 
         MDIconButton:
             id: play_button
@@ -16,12 +11,13 @@
             icon: "play"
             disabled: not root.play_enabled
             on_press:
-                root.play_plie_piece()
+                root.play_audio()
 
         MDIconButton:
             id: stop_button
             pos_hint: {'center_x': 0.55, 'center_y': 0.05}
             icon: "stop"
+            disabled: root.play_enabled
             on_press:
                 root.stop_audio()
 
@@ -42,4 +38,33 @@
             value: 0
             pos_hint: {'center_x':0.5, 'center_y':0.12}
             size_hint: (.8,.75)
+
+        #Slider:
+            #id: bpm_slider
+            #min: 0
+            #max: 100
+            #value: 50
+            #orientation: "vertical"
+            #size_hint_y: .4
+            #pos_hint: {'center_x': .6, 'center_y': .4}
+
+
+        #Slider:
+            #id: volume_slider
+            #min: 0
+            #max: 100
+            #value: 80
+            #orientation: "vertical"
+            #size_hint_y: .4
+            #pos_hint: {'center_x': .8, 'center_y': .4}
+
+        Label:
+            pos_hint: {'center_x': .6, 'center_y': .6}
+            text: "BPM"
+            font_name: 'GillSans'
+
+        Label:
+            pos_hint: {'center_x': .8, 'center_y': .6}
+            text: "Volume"
+            font_name: 'GillSans'
 

@@ -2,27 +2,131 @@
 #: import navigation_screen_manager screens.navigation_screen_manager
 #: import piece_selection screens.piece_selection.piece_selection
 #: import playback screens.playback.playback
-#: import tap_tempo tap_tempo
+#: import tap_tempo screens.tap_tempo.tap_tempo
 
 MyScreenManager:
 
 <MyScreenManager@NavigationScreenManager>:
     Screen:
         name: "class_overview"
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: 'Plies'
-                on_press: root.push('plies')
-            Button:
-                text: 'Tendus from First'
-                on_press: root.push('tendus_from_first')
-            Button:
-                text: 'Tendus from Fifth'
-                on_press: root.push('tendus_from_fifth')
-            Button:
-                text: 'Jetes'
-                on_press: root.push('jetes')
+        ScrollView:
+            size_hint: 1, 1
+            do_scroll_x: False
+            scroll_type: ['content']
+            BoxLayout:
+                size_hint: 1, None
+                height: 3000
+                orientation: 'vertical'
+                spacing: 0
+                Label:
+                    text: "BARRE"
+                    font_name: 'GillSans'
+                    font_size: 55
+                    background_color: (0, 0, 0, 1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                Button:
+                    text: 'PLIÉS'
+                    font_name: 'GillSans'
+                    #font_size: 40
+                    #text_size: self.size
+                    #halign: "left"
+                    #valign: "middle"
+                    #padding_x: 100
+                    on_press: root.push('plies')
+                Button:
+                    text: 'TENDUS FROM FIRST'
+                    font_name: 'GillSans'
+                    on_press: root.push('tendus_from_first')
+                Button:
+                    text: 'TENDUS FROM FIFTH'
+                    font_name: 'GillSans'
+                    on_press: root.push('tendus_from_fifth')
+                Button:
+                    text: 'SLOW DÉGAGÉ'
+                    font_name: 'GillSans'
+                    on_press: root.push('slow_degage')
+                Button:
+                    text: 'FAST DÉGAGÉ'
+                    font_name: 'GillSans'
+                    on_press: root.push('fast_degage')
+                Button:
+                    text: 'RON DE JAMBE'
+                    font_name: 'GillSans'
+                    on_press: root.push('ron_de_jambe')
+                Button:
+                    text: 'STRETCH'
+                    font_name: 'GillSans'
+                    on_press: root.push('stretch')
+                Button:
+                    text: 'FONDUE'
+                    font_name: 'GillSans'
+                    on_press: root.push('fondue')
+                Button:
+                    text: 'DÉVELOPPÉ'
+                    font_name: 'GillSans'
+                    on_press: root.push('developpe')
+                Button:
+                    text: 'FRAPPE'
+                    font_name: 'GillSans'
+                    on_press: root.push('frappe')
+                Button:
+                    text: 'GRANDE BATTEMENTS'
+                    font_name: 'GillSans'
+                    on_press: root.push('grande_battements')
+
+                Label:
+                    text: "CENTRE"
+                    font_name: 'GillSans'
+                    font_size: 55
+                    background_color: (0, 0, 0, 1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                Button:
+                    text: 'ADAGIO'
+                    font_name: 'GillSans'
+                    on_press: root.push('adagio')
+                Button:
+                    text: 'TENDUS FROM FIFTH'
+                    font_name: 'GillSans'
+                    on_press: root.push('tendus_from_fifth_centre')
+                Button:
+                    text: 'PIROUETTE 1'
+                    font_name: 'GillSans'
+                    on_press: root.push('pirouette_1')
+                Button:
+                    text: 'PIROUETTE 2'
+                    font_name: 'GillSans'
+                    on_press: root.push('pirouette_2')
+                Button:
+                    text: 'SMALL JUMPS'
+                    font_name: 'GillSans'
+                    on_press: root.push('small_jumps')
+                Button:
+                    text: 'GRANDE ALLEGRO'
+                    font_name: 'GillSans'
+                    on_press: root.push('grande_allegro')
+                Button:
+                    text: 'PIQUE TURNS'
+                    font_name: 'GillSans'
+                    on_press: root.push('pique_turns')
+                Button:
+                    text: 'MENAGE/FOUETTÉ'
+                    font_name: 'GillSans'
+                    on_press: root.push('menage')
+                Button:
+                    text: 'REVERANCE'
+                    font_name: 'GillSans'
+                    on_press: root.push('reverance')
+
     Screen:
         name: "plies"
         canvas.before:
@@ -43,35 +147,227 @@ MyScreenManager:
                             root.pop()
         FloatLayout:
             Label:
-                text: "Plies"
+                text: "PLIES"
+                font_name: 'GillSans'
                 size_hint: .6, .1
-                pos_hint: {"x":.25, "top":1}
+                pos_hint: {"center_x":.5, "top":1}
             Button:
                 id: plie_select_piece_title
-                text: 'select piece'
+                text: 'SELECT PIECE'
+                font_name: 'GillSans'
                 size_hint: .6, .1
-                pos_hint: {"x":.25, "y":.8}
+                pos_hint: {"center_x":.5, "y":.8}
                 on_press:
                     root.push('piece_selection')
         Playback:
+        TapTempo:
 
     Screen:
         name: "tendus_from_first"
-        Button:
-            text: 'back'
-            on_press: root.pop()
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
 
     Screen:
         name: "tendus_from_fifth"
-        Button:
-            text: 'back'
-            on_press: root.pop()
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
 
     Screen:
-        name: "jetes"
-        Button:
-            text: 'back'
-            on_press: root.pop()
+        name: "slow_degage"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "fast_degage"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "ron_de_jambe"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "stretch"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "fondue"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "developpe"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "frappe"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "grande_battements"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "adagio"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+    Screen:
+        name: "tendus_from_fifth_centre"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "pirouette_1"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "pirouette_2"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "small_jumps"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "grande_allegro"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "pique_turns"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+    Screen:
+        name: "menage"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
+
+    Screen:
+        name: "reverance"
+        BoxLayout:
+            orientation: "vertical"
+            ActionBar:
+                ActionView:
+                    ActionPrevious:
+                        title: "back"
+                        on_release:
+                            root.pop()
 
     Screen:
         name: "piece_selection"

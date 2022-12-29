@@ -19,23 +19,13 @@ class NavigationScreenManager(ScreenManager):
             self.transition.direction = "right"
             self.current = screen_name
 
-    def tempo_tap(self):
-        print("tapped")
-
-    '''def play_audio(self):
-        self.sound = Piece.loaded_piece
-        #self.song_title = self.song_list[random.randrange(0, self.song_count)]
-        #print(self.song_title)
-        #self.sound = SoundLoader.load('{}/{}'.format(self.music_dir, self.song_title))
-        self.sound.play()
-        self.play_enabled = False
-        self.stop_enabled = True'''
-
-    def display_title(self):
+    '''def display_title(self):
         layout = MDRelativeLayout(md_bg_color=[0, 0.5, 1, 1])
         self.songlabel = Label(pos_hint={'center_x': 0.5, 'center_y': .96},
                                size_hint=(1, 1),
                                font_size=30)
         layout.add_widget(self.songlabel)
         self.songlabel.text = "===== Playing ~ ====="
-        return layout
+        return layout'''
+
+

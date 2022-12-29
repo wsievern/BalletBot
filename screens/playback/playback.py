@@ -10,13 +10,11 @@ Builder.load_file("screens/playback/playback.kv")
 
 class Playback(FloatLayout):
     play_enabled = BooleanProperty(True)
-    stop_enabled = BooleanProperty(True)
 
     def __init__(self, **kwargs):
         super(Playback, self).__init__(**kwargs)
         # TODO: probably only need one boolean, can always use inverse of it
         self.play_enabled = True
-        self.stop_enabled = False
         '''if plie_piece.displayname is not None:
             plie_piece_title_label = Label(text=str(plie_piece.displayname),
                                            pos_hint={'center_x': 0.5, 'center_y': .96},
@@ -33,7 +31,7 @@ class Playback(FloatLayout):
             self.add_widget(plie_piece_bpm_label)'''
 
     # TODO: rename to play_audio for consistency?
-    def play_plie_piece(self):
+    def play_audio(self):
         filename = mem.selected_piece_filename
         print(f"Playing: {filename}")
         if not filename:
@@ -42,7 +40,6 @@ class Playback(FloatLayout):
         self.sound = SoundLoader.load(filename)
         self.sound.play()
         self.play_enabled = False
-        self.stop_enabled = True
 
     def stop_audio(self):
         filename = mem.selected_piece_filename
@@ -51,6 +48,5 @@ class Playback(FloatLayout):
         if filename is not None:
             self.sound.stop()
             self.play_enabled = True
-            self.stop_enabled = False
 
 
