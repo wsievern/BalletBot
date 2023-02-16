@@ -1,6 +1,4 @@
 from kivy.uix.screenmanager import ScreenManager
-from kivymd.uix.relativelayout import MDRelativeLayout
-from kivy.uix.label import Label
 
 
 class NavigationScreenManager(ScreenManager):
@@ -18,14 +16,3 @@ class NavigationScreenManager(ScreenManager):
             del self.screen_stack[-1]
             self.transition.direction = "right"
             self.current = screen_name
-
-    '''def display_title(self):
-        layout = MDRelativeLayout(md_bg_color=[0, 0.5, 1, 1])
-        self.songlabel = Label(pos_hint={'center_x': 0.5, 'center_y': .96},
-                               size_hint=(1, 1),
-                               font_size=30)
-        layout.add_widget(self.songlabel)
-        self.songlabel.text = "===== Playing ~ ====="
-        return layout'''
-
-
