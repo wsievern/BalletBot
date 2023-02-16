@@ -1,10 +1,10 @@
 #:kivy 2.0
 #: import playback screens.playback.playback
+#: import piece_selection screens.piece_selection.piece_selection
 
 <Playback>:
     name: "playback"
     FloatLayout:
-
         MDIconButton:
             id: play_button
             pos_hint: {'center_x': 0.4, 'center_y': 0.05}
@@ -22,49 +22,83 @@
                 root.stop_audio()
 
         Label:
+            id: time_elapsed
             text: "00:00"
             pos_hint: {'center_x':.16, 'center_y':.145}
             size_hint: (1,1)
             font_size: 18
 
         Label:
+            id: time_remaining
             text: "00:00"
             pos_hint: {'center_x':0.84, 'center_y':.145}
             size_hint: (1,1)
             font_size: 18
 
+        #Slider:
+            #id: progress_slider
+            #max: 100
+            #value: 0
+            #step: .01
+            #sensitivity: 'handle'
+            #pos_hint: {'center_x':0.5, 'center_y':0.12}
+            #size_hint: (.8,.01)
+            #disabled: True
+            #on_value:
+                #root.set_time_with_progress_bar(progress_slider)
+
         ProgressBar:
+            id: progress_bar
             max: 100
             value: 0
             pos_hint: {'center_x':0.5, 'center_y':0.12}
-            size_hint: (.8,.75)
+            size_hint: (.8,.01)
 
-        #Slider:
-            #id: bpm_slider
-            #min: 0
-            #max: 100
-            #value: 50
-            #orientation: "vertical"
-            #size_hint_y: .4
-            #pos_hint: {'center_x': .6, 'center_y': .4}
+        Slider:
+            id: volume_slider
+            min: 0
+            max: 1
+            value: .8
+            orientation: "horizontal"
+            step: .01
+            size_hint_y: .01
+            size_hint_x: .8
+            pos_hint: {'center_x': .5, 'center_y': .28}
+            sensitivity: 'handle'
+            padding: 12
+            value_track: True
+            disabled: False
+            on_value:
+                root.adjust_volume(volume_slider)
 
-
-        #Slider:
-            #id: volume_slider
-            #min: 0
-            #max: 100
-            #value: 80
-            #orientation: "vertical"
-            #size_hint_y: .4
-            #pos_hint: {'center_x': .8, 'center_y': .4}
-
+        Slider:
+            id: bpm_slider
+            min:.5
+            max:2
+            value: 1
+            orientation:"horizontal"
+            size_hint_y:.01
+            size_hint_x: .8
+            pos_hint:{'center_x': .5, 'center_y': .45}
+            padding:12
+            value_track:True
+            disabled: True
+            sensitivity:'handle'
+            on_value:
+                root.timestretch_audio(bpm_slider, time_remaining)
+                root.display_bpm_slider_value(bpm_slider)
         Label:
-            pos_hint: {'center_x': .6, 'center_y': .6}
-            text: "BPM"
+            id: display_slider_value
+            text: '1x'
+            pos_hint: {'center_x': .8, 'center_y': .5}
             font_name: 'GillSans'
 
         Label:
-            pos_hint: {'center_x': .8, 'center_y': .6}
+            pos_hint: {'center_x': .2, 'center_y': .5}
+            text: "Speed"
+            font_name: 'GillSans'
+
+        Label:
+            pos_hint: {'center_x': .2, 'center_y': .33}
             text: "Volume"
             font_name: 'GillSans'
-

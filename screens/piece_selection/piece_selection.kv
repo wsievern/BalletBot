@@ -1,9 +1,28 @@
 #:kivy 2.0
 #: import piece_selection screens.piece_selection.piece_selection
+#: import tap_tempo screens.tap_tempo.tap_tempo
+#: import mem state.app_state.mem
 
 <PieceSelection>:
     name: "piece_selection"
+    #id: piece_selection_1
     BoxLayout:
-        id: pieces_layout
+        name: 'action_bar'
         orientation: "vertical"
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                ActionPrevious:
+                    title: "back"
+                    on_release:
+                        root.parent.parent.parent.pop()
+                        root.update_piece_selection_text(app.root.ids.plies_select_piece_title)
+                        if mem.selected_piece_filename: \
+                        app.root.ids.playback.ids.bpm_slider.disabled = False
+                        app.root.ids.playback.ids.volume_slider.disabled = False
+                        if mem.selected_piece_info: \
+                        root.populate_piece_info(app.root.ids.plies_piece_info_label)
+                        root.update_time_remaining(app.root.ids.playback.ids.time_remaining)
+
+
 
